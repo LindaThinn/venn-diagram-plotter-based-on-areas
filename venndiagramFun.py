@@ -20,15 +20,19 @@ def calculateRadius(area):
     return radius 
 
 
-def plotVennDiagram(leftCircleArea, rightCircleArea, overlayArea, title = 'Venn diagram'):
+def plotVennDiagram(firstCircleArea, secondCircleArea, overlayArea, title = 'Venn diagram'):
     """
     plots venn diagram 
     returns four coordinates with origo in left top corner 
     """
     # Capital letter variables corresponds to capital A area and vice versa 
+    # Capital letter variabels corresponds to the biggest circle 
 
-    A = leftCircleArea 
-    a = rightCircleArea 
+    
+    # dette kan løse problemet, men gjør det da ikke mulig å velge venstre og høyre. 
+    A = max(firstCircleArea, secondCircleArea)
+    a = min(firstCircleArea, secondCircleArea)
+    
     overlay_Aa = overlayArea 
     
     
@@ -92,18 +96,19 @@ def plotVennDiagram(leftCircleArea, rightCircleArea, overlayArea, title = 'Venn 
 
 
     plt.title( title) 
-    plt.show()
+    plt.show() 
     
     return (left_corner_x_R, left_corner_y_R, left_corner_x_r, left_corner_y_r)
     
 
 if __name__ == '__main__':
 
+    # uhendig antalgelse om at venstre er >= høyre.
+    # kommenter inn kode i funksjonen som alltid setter den største til venstre 
 
-
-    leftCircleArea = 100  # left circle amount 
-    rightCircleArea = 200  # right circle amount 
-    overlayArea = 70  #overlay amount 
+    firstCircleArea = 500  # first circle amount 
+    secondCircleArea = 300  # second circle amount 
+    overlayArea = 150  #overlay amount 
     title = 'test test '
 
-    plotVennDiagram(leftCircleArea, rightCircleArea, overlayArea, title)
+    plotVennDiagram(firstCircleArea, secondCircleArea, overlayArea, title)
